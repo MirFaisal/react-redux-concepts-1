@@ -19,6 +19,16 @@ const Counter = () => {
   const handelReset = () => {
     dispatch(counterReset());
   };
+
+  const handel = async () => {
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      const user = await res.json();
+      console.log(user);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
   return (
     <>
       <h2>welcome to counter app with Redux</h2>
@@ -26,6 +36,7 @@ const Counter = () => {
       <button onClick={handelIncrement}>Increment</button>
       <button onClick={handelDecrement}>Decrement</button>
       <button onClick={handelReset}>Reset</button>
+      <button onClick={handel}>Async fecth</button>
     </>
   );
 };
